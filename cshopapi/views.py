@@ -73,7 +73,7 @@ def get_categories(request):
         return Response([])
 
 @api_view(['GET'])
-def get_categories(request):
+def get_clothes(request):
     clothes =Clothes.objects.all()
 
     if clothes:
