@@ -12,6 +12,30 @@ class Registration(models.Model):
 
     def __str__(self):
         return self.useremail
+class Category(models.Model):
+    itemcategory = models.CharField(max_length = 100)
+    date_added = models.DateTimeField(auto_now = True)
+    class Meta:
+        db_table = 'Category'
+
+    def __str__(self):
+        return self.itemcategory
+
+class Clothes(models.Model):
+    category = models.ForeignKey(Category, on_delete = models.CASCADE)
+    item_name = models.CharField(max_lenmgth = 100)
+    item_color = models.CharField(max_lenmgth = 100)
+    item_description = models.TextField(max_lenmgth = 100)
+    item_quantity = models.IntegerField()
+    item_price = models.IntegerField()
+    for_gender = models.CharField(max_lenmgth = 100)
+    date_added = models.DateTimeField(auto_now = True)
+
+    class Meta:
+        db_table = 'Clothes'
+
+    def __str__(self):
+        return self.item_name
 
 class Checkout(models.Model):
     user = models.ForeignKey(Registration, on_delete = models.CASCADE)
@@ -28,11 +52,15 @@ class Checkout(models.Model):
     def __str__(self):
         return self.deliveryCity
 
-class Category(models.Model):
-    itemcategory = models.CharField(max_length = 100)
+class Cart(models.Model):
+    user = models.ForeignKey(Registration, on_delete = models.CASCADE)
+    items = models.ForeignKey(Clothes, on_delete = models.CASCADE)
+    quantity = models.IntegerField()
+    price = models.IntegerField()
     date_added = models.DateTimeField(auto_now = True)
-    class Meta:
-        db_table = 'Category'
 
+    class Meta:
+        db_table = 'Cart'
+    
     def __str__(self):
-        return self.itemcategory
+        return self.user.useremail
