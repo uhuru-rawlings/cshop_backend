@@ -23,12 +23,12 @@ class Category(models.Model):
 
 class Clothes(models.Model):
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
-    item_name = models.CharField(max_lenmgth = 100)
-    item_color = models.CharField(max_lenmgth = 100)
-    item_description = models.TextField(max_lenmgth = 100)
+    item_name = models.CharField(max_length = 100)
+    item_color = models.CharField(max_length = 100)
+    item_description = models.TextField(max_length = 100)
     item_quantity = models.IntegerField()
     item_price = models.IntegerField()
-    for_gender = models.CharField(max_lenmgth = 100)
+    for_gender = models.CharField(max_length = 100)
     date_added = models.DateTimeField(auto_now = True)
 
     class Meta:
