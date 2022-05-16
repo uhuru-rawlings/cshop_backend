@@ -43,7 +43,7 @@ class Checkout(models.Model):
     deliveryCity = models.CharField(max_length = 100)
     delivery_address = models.CharField(max_length = 200)
     receiver_id = models.IntegerField()
-    receiver_id = models.IntegerField()
+    receiver_contact = models.IntegerField()
     added_date = models.DateTimeField(auto_now = True)
 
     class Meta:

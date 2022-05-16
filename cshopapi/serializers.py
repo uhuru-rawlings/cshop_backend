@@ -20,7 +20,7 @@ class ClothesSerializer(serializers.ModelSerializer):
 class CheckoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = Checkout
-        fields = ["id","user","pickup_date","deliveryCity","delivery_address","receiver_id","receiver_id","added_date"]
+        fields = ["id","user","pickup_date","deliveryCity","delivery_address","receiver_id","receiver_contact","added_date"]
 
 
 class CartSerializer(serializers.ModelSerializer):
