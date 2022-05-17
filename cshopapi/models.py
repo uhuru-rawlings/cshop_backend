@@ -1,5 +1,5 @@
 from django.db import models
-
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class Registration(models.Model):
@@ -25,6 +25,7 @@ class Clothes(models.Model):
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
     item_name = models.CharField(max_length = 100)
     item_color = models.CharField(max_length = 100)
+    item_image = CloudinaryField('image')
     item_description = models.TextField(max_length = 100)
     item_quantity = models.IntegerField()
     item_price = models.IntegerField()

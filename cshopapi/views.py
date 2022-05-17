@@ -38,8 +38,7 @@ def login_user(request):
                 'iat': datetime.datetime.utcnow()
             }
 
-            token = jwt.encode(payload,'secret',algorithm='SH256').decode='utf-8'
-
+            token = jwt.encode(payload,'secret',algorithm='HS256').decode('utf-8')
             return Response({"jwt":token})
         else:
             return Response({"error":"Wrong password, try again."})
@@ -49,13 +48,14 @@ def login_user(request):
 @api_view(['POST'])
 def decode_user(request):
     details = request.data
-    token = details['jtw']
+    token = details['jwt']
 
     if token:
         try:
-            user = jwt.decode(token,'secret',algorithm=['SH256'])
-            serialize = RegistrationSerializers(user)
-            return Response(serialize.data)
+            user = jwt.decode(token,'secret',algorithm=['HS256'])
+            # serialize = RegistrationSerializers(user)
+            # return Response(serialize.data)
+            return Response(user)
         except:
             return Response({"error":"user un Authenticated"})
     else:
