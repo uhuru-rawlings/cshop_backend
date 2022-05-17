@@ -1,3 +1,4 @@
+import json
 from lib2to3.pgen2 import token
 from django.shortcuts import render
 from django.contrib.auth.hashers import make_password,check_password
@@ -106,17 +107,18 @@ def cart_items(request):
     details = request.data 
     user = details["user"] #should be user id
     items = details["items"] #should be [{"id":1,"quantity":20}]
-    quantity = details["quantity"]
-    price = details["price"]
-    date_added = details["date_added"]
-
+    # print("############")
+    # print(item)
+    # items = json.loads(item)
     user = Registration.objects.get(id = user)
     for x in items:
-        items = Clothes.objects.get(id = x.id)
-        new_items = Cart(user = user,items = items,quantity = x.quantity,price = (x.quantity * items.item_price))
+        print("############")
+        print()
+        items = Clothes.objects.get(id = x['id'])
+        new_items = Cart(user = user,items = items,quantity = 1,price = (x['quantity'] * items.item_price))
         new_items.save()
 
-        return Response({"Successfully added to purchase history"})
+        return Response({"success":"Successfully added to purchase history"})
 
 @api_view(['GET'])
 def get_history(request, id):
