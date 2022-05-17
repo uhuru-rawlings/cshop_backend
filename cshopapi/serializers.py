@@ -15,7 +15,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class ClothesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Clothes
-        fields = ["id","category","item_name","item_color","item_description","item_quantity","item_price","for_gender","date_added"]
+        fields = ["id","category","item_name","item_color","item_image","item_description","item_quantity","item_price","for_gender","date_added"]
 
 class CheckoutSerializer(serializers.ModelSerializer):
     class Meta:
