@@ -25,7 +25,7 @@ class Clothes(models.Model):
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
     item_name = models.CharField(max_length = 100)
     item_color = models.CharField(max_length = 100)
-    item_image = CloudinaryField('image')
+    item_image = CloudinaryField('image', default="images")
     item_description = models.TextField(max_length = 100)
     item_quantity = models.IntegerField()
     item_price = models.IntegerField()
@@ -44,7 +44,7 @@ class Checkout(models.Model):
     deliveryCity = models.CharField(max_length = 100)
     delivery_address = models.CharField(max_length = 200)
     receiver_id = models.IntegerField()
-    receiver_contact = models.IntegerField()
+    receiver_contact = models.IntegerField(default=0)
     added_date = models.DateTimeField(auto_now = True)
 
     class Meta:

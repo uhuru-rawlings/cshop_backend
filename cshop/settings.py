@@ -82,9 +82,9 @@ REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoS
 WSGI_APPLICATION = 'cshop.wsgi.application'
 
 cloudinary.config( 
-  cloud_name = "YOUR_CLOUD_NAME", 
-  api_key = "YOUR_API_KEY", 
-  api_secret = "YOUR_API_SECRET" 
+  cloud_name = config('YOUR_CLOUD_NAME'), 
+  api_key = config('YOUR_API_KEY'), 
+  api_secret = config('YOUR_API_SECRET')
 )
 
 # Database
