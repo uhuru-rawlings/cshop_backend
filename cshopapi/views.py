@@ -105,17 +105,12 @@ def checkout_view(request):
 @api_view(['POST'])
 def cart_items(request):
     details = request.data 
-    user = details["user"] #should be user id
-    items = details["items"] #should be [{"id":1,"quantity":20}]
-    # print("############")
-    # print(item)
-    # items = json.loads(item)
+    user = details["user"] # should be user id
+    items = details["items"] # should be [{"id":1,"quantity":20}]
     user = Registration.objects.get(id = user)
     for x in items:
-        print("############")
-        print()
         items = Clothes.objects.get(id = x['id'])
-        new_items = Cart(user = user,items = items,quantity = 1,price = (x['quantity'] * items.item_price))
+        new_items = Cart(user = user,items = items,quantity = 1,price = (1 * items.item_price))
         new_items.save()
 
         return Response({"success":"Successfully added to purchase history"})
