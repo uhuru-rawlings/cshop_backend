@@ -53,7 +53,7 @@ DATABASES['default'].update(db_from_env)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY='django-insecure-td%#@5!aq*phq%c*4$@$0s$1g-w07+%cr84y#chfv45e&u9=w9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
